@@ -18,3 +18,8 @@ jobs:
 
       - name: Run
         run: ./run.sh
+        env:
+          CLOUDFLARE_TOKEN: ${{ secret.CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secret.CLOUDFLARE_ZONE_ID }}
+          WIKI_BOT_USERNAME: ${{ secret.WIKI_BOT_USERNAME }}
+          WIKI_BOT_PASSWORD: ${{ secret.WIKI_BOT_PASSWORD }}
