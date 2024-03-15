@@ -32,7 +32,7 @@ CR=$(curl -S \
   --silent \
 	--request "GET" "${WIKIAPI}?action=query&meta=tokens&type=login&format=json")
 
-echo "$CR" | jq .
+# echo "$CR" | jq .
 
 echo "$CR" > ${TEMP_DIR}/login.json
 TOKEN=$(jq --raw-output '.query.tokens.logintoken' ${TEMP_DIR}/login.json)
@@ -62,7 +62,7 @@ CR=$(curl -S \
   --silent \
 	--request "POST" "${WIKIAPI}")
 
-echo "$CR" | jq .
+# echo "$CR" | jq .
 
 STATUS=$(echo $CR | jq '.login.result')
 if [[ $STATUS == *"Success"* ]]; then
@@ -85,7 +85,7 @@ CR=$(curl -S \
   --silent \
 	--request "GET" "${WIKIAPI}?action=query&meta=tokens&format=json")
 
-echo "$CR" | jq .
+# echo "$CR" | jq .
 echo "$CR" > ${TEMP_DIR}/edittoken.json
 echo "-----" && echo && echo
 EDITTOKEN=$(jq --raw-output '.query.tokens.csrftoken' ${TEMP_DIR}/edittoken.json)
@@ -116,6 +116,6 @@ CR=$(curl -S \
 	--form "token=${EDITTOKEN}" \
 	--request "POST" "${WIKIAPI}")
 
-echo "$CR" | jq .
+# echo "$CR" | jq .
 echo && echo "-----" && echo
 echo "Done!"
