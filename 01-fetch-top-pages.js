@@ -22,7 +22,9 @@ const main = async () => {
             edgeResponseContentTypeName: "html"
             AND: [
               { clientRequestPath_notlike: "%.php" },
+              { clientRequestPath_notlike: "/Special:%" },
               { clientRequestPath_notin: [
+                "/"
                 "/Main_Page",
                 "/Character_Tier_List"
               ]}
