@@ -7,7 +7,7 @@ and exports it to the wiki.
 
 
 <br>
-<p align="center"><img src="https://github.com/sphiria/gbf-wiki-popular-pages/assets/25855364/54007361-4c2f-4704-9cb7-f1050e49b1d4" width="700"></p>
+<p align="center"><img src="https://github.com/sphiria/gbf-wiki-popular-pages/assets/25855364/05d1cd3d-3ae5-486e-b694-fac458c4dc03" width="700"></p>
 <br>
 
 ## Local Usage
