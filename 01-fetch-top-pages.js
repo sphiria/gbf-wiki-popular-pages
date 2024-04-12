@@ -55,7 +55,7 @@ const main = async () => {
     .map(result => result.dimensions.clientRequestPath)
     .map(string => string.replace(/^\//, ""))
     .map(string => string.replace(/_/g, " "))
-    .map(page => `{{LinkButton|[[${page}]]}}`)
+    .map(page => `# [[${page}]]`)
     .forEach(entry => console.log(entry));
 }
 
