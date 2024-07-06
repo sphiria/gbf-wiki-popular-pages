@@ -1,0 +1,30 @@
+# This workflow creates dummy commit every month to a dummy branch
+# To prevent GitHub from suspending the daily workflow scheduled run
+# Which happens after 60d of repository inactivity
+
+name: GitHub Actions Keepalive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  keepalive:
+    name: Keepalive
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: keepalive
+
+      - name: Dummy Commit
+        run: |
+          rm -rf *
+          date -R > README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "sync: $(date -R)"
+          git push
