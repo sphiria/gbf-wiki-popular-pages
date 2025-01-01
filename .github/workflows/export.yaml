@@ -23,3 +23,5 @@ jobs:
           CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
           WIKI_BOT_USERNAME: ${{ secrets.WIKI_BOT_USERNAME }}
           WIKI_BOT_PASSWORD: ${{ secrets.WIKI_BOT_PASSWORD }}
+          USERAGENT: ${{ secrets.USERAGENT }}
+
