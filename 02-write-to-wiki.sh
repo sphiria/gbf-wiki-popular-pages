@@ -2,7 +2,7 @@
 set -Euo pipefail
 
 ###############################################################################
-USERAGENT="sphiria/gbf-wiki-popular-pages"
+USERAGENT="$USERAGENT"
 
 PAGE="PopularPages"
 PAGETEXT="$1"
