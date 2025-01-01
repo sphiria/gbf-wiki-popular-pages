@@ -39,7 +39,7 @@ TOKEN=$(jq --raw-output '.query.tokens.logintoken' ${TEMP_DIR}/login.json)
 
 if [ "$TOKEN" == "null" ]; then
 	echo "Getting a login token failed."
-	exit
+	exit 1
 else
   echo "::add-mask::$TOKEN"
 	echo "Login token is $TOKEN"
@@ -70,7 +70,7 @@ if [[ $STATUS == *"Success"* ]]; then
 	echo && echo "-----" && echo
 else
 	echo "Unable to login, is logintoken ${TOKEN} correct?"
-	exit
+	exit 1
 fi
 
 
@@ -97,7 +97,7 @@ if [[ $EDITTOKEN == *"+\\"* ]]; then
 	echo && echo "-----" && echo
 else
 	echo "Edit token not set."
-	exit
+	exit 1
 fi
 
 
