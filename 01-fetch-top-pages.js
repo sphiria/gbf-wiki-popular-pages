@@ -26,6 +26,7 @@ const main = async () => {
               { clientRequestPath_notin: [
                 "/"
                 "/Main_Page",
+                "/cdn-cgi/content",
                 "/Character_Tier_List"
               ]}
             ]
