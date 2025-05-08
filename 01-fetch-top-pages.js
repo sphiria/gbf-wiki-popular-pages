@@ -23,10 +23,10 @@ const main = async () => {
             AND: [
               { clientRequestPath_notlike: "%.php" },
               { clientRequestPath_notlike: "/Special:%" },
+              { clientRequestPath_notlike: "/cdn-cgi/%" },
               { clientRequestPath_notin: [
                 "/"
                 "/Main_Page",
-                "/cdn-cgi/content",
                 "/Character_Tier_List"
               ]}
             ]
