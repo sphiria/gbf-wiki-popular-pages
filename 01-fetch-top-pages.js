@@ -1,14 +1,16 @@
 #!/usr/bin/env node
+
 const main = async () => {
   const url = 'https://api.cloudflare.com/client/v4/graphql'
   const headers = {
     "Authorization": `Bearer ${process.env.CLOUDFLARE_TOKEN}`,
   };
+
   // We need to query with 1 week window
   const date = new Date();
   date.setDate(date.getDate() - 7);
   const lastWeekDate = date.toISOString().substring(0, 10);
-  console.log(lastWeekDate)
+  
   // Build graphql query
   const query = `
   {
