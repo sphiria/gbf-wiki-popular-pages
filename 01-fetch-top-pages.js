@@ -1,16 +1,14 @@
 #!/usr/bin/env node
-
 const main = async () => {
   const url = 'https://api.cloudflare.com/client/v4/graphql'
   const headers = {
     "Authorization": `Bearer ${process.env.CLOUDFLARE_TOKEN}`,
   };
-
   // We need to query with 1 week window
   const date = new Date();
   date.setDate(date.getDate() - 7);
   const lastWeekDate = date.toISOString().substring(0, 10);
-
+  console.log(lastWeekDate)
   // Build graphql query
   const query = `
   {
@@ -28,7 +26,8 @@ const main = async () => {
                 "/"
                 "/Main_Page",
                 "/Character_Tier_List"
-              ]}
+              ]},
+              { botManagementDecision: "likely_human" }
             ]
           }
           orderBy: [ sum_visits_DESC ]
@@ -42,14 +41,12 @@ const main = async () => {
     }
   }
   `;
-
   // Send request
   const resp = await fetch(url, {
     method: 'POST',
     headers,
     body: JSON.stringify({ query }),
   });
-
   // Print pages
   const json = await resp.json();
   json.data.viewer.zones[0].httpRequestsAdaptiveGroups
@@ -59,5 +56,4 @@ const main = async () => {
     .map(page => `# [[${page}]]`)
     .forEach(entry => console.log(entry));
 }
-
 main();
