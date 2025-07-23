@@ -33,7 +33,7 @@ const main = async () => {
             ]
           }
           orderBy: [ sum_visits_DESC ]
-          limit: 10
+          limit: 12
         ) {
           dimensions {
             clientRequestPath
@@ -43,16 +43,24 @@ const main = async () => {
     }
   }
   `;
+
   // Send request
   const resp = await fetch(url, {
     method: 'POST',
     headers,
     body: JSON.stringify({ query }),
   });
+
+  // Utility function for later
+  Array.prototype.deduplicate = function() { return [...new Set(this)] };
+  
   // Print pages
   const json = await resp.json();
   json.data.viewer.zones[0].httpRequestsAdaptiveGroups
     .map(result => result.dimensions.clientRequestPath)
+    .map(string => decodeURIComponent(string));
+    .deduplicate()
+    .slice(0, 10)
     .map(string => string.replace(/^\//, ""))
     .map(string => string.replace(/_/g, " "))
     .map(page => `# [[${page}]]`)
