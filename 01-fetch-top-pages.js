@@ -58,7 +58,7 @@ const main = async () => {
   const json = await resp.json();
   json.data.viewer.zones[0].httpRequestsAdaptiveGroups
     .map(result => result.dimensions.clientRequestPath)
-    .map(string => decodeURIComponent(string));
+    .map(string => decodeURIComponent(string))
     .deduplicate()
     .slice(0, 10)
     .map(string => string.replace(/^\//, ""))
