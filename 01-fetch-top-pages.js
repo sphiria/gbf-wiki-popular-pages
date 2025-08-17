@@ -63,7 +63,7 @@ const main = async () => {
     .slice(0, 10)
     .map(string => string.replace(/^\//, ""))
     .map(string => string.replace(/_/g, " "))
-    .map(page => `# [[${page}]]`)
+    .map(page => `# [[:${page}]]`)
     .forEach(entry => console.log(entry));
 }
 main();
