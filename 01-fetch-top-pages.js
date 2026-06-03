@@ -24,6 +24,7 @@ const main = async () => {
               { clientRequestPath_notlike: "%.php" },
               { clientRequestPath_notlike: "/Special:%" },
               { clientRequestPath_notlike: "/cdn-cgi/%" },
+              { clientRequestPath_notlike: "%/history" },
               { clientRequestPath_notin: [
                 "/"
                 "/Main_Page",
