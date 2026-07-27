@@ -18,6 +18,7 @@ const main = async () => {
       zones(filter: {zoneTag: "${process.env.CLOUDFLARE_ZONE_ID}"}) {
         httpRequestsAdaptiveGroups(
           filter: {
+            clientRequestHTTPHost: "gbf.wiki"
             date_gt: "${lastWeekDate}",
             edgeResponseContentTypeName: "html"
             AND: [
